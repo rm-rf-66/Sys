@@ -24,6 +24,10 @@ always_comb begin
         UJ_IMM: begin
             imm = {{44{inst[24]}}, {inst[12:5]}, {inst[13]}, {inst[23:14]}, 1'b0};
         end
+        CSR_IMM: begin
+            // zimm is inst[19:15]; here inst is inst[31:7], so [12:8]
+            imm = {59'b0, inst[12:8]};
+        end
         IMM0: begin
             imm = 64'b0;
         end
